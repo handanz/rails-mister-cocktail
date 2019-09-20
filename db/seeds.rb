@@ -8,14 +8,11 @@
 require 'faker'
 require 'open-uri'
 
+puts 'running seeds'
 url = open("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").read
 ruby_hash = JSON.parse(url)
 
 ingredients = ruby_hash['drinks'].map { |h| h['strIngredient1'] }
 ingredients.each { |element| Ingredient.create!(name: element) }
 
-puts 'running seeds'
-20.times do
-  Cocktail.create(name: Faker::Coffee.blend_name)
-end
 puts 'seeds pupolating the planet'
