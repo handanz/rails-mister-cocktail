@@ -1,0 +1,9 @@
+
+<h1>Cocktail in Bangkok</h1>
+<br>
+<%= link_to 'Add a new cocktail', new_cocktail_path(@cocktail) %>
+<br>
+<h3><% @cocktails.each do |c| %></h3>
+<p><%= c.name %></p>
+<p><%= link_to 'Delete', cocktail_path(c), method: :delete %></p>
+<% end %>
